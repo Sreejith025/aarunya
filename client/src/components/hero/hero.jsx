@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import './Hero.css'
+import './hero.css'
 import heroImg from '../../assets/hero-bg.png'
 import Categories from '../categories/Categories'
 import ProductCard from '../products/ProductCard'
 
-export default function Hero() {
+export default function hero() {
     const [popularProducts, setPopularProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -69,4 +69,4 @@ export default function Hero() {
             )}
         </section>
     )
-}
+}
