@@ -2,6 +2,7 @@ import Navbar from '../../components/navbar/Navbar'
 import './Addproduct.css'
 import { PlusCircle, List, FileText, UploadCloud, X, Edit, Trash2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../../config'
 
 export default function Addproduct() {
     const [activeTab, setActiveTab] = useState('add');
@@ -25,7 +26,7 @@ export default function Addproduct() {
 
     const fetchProducts = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/products');
+            const res = await fetch(`${API_BASE_URL}/api/products`);
             const data = await res.json();
             if (data.success) {
                 setProducts(data.products);
@@ -90,7 +91,7 @@ export default function Addproduct() {
         setColors(product.colors || []);
         
         // Load existing images as previews
-        const previews = product.images.map(img => img.startsWith('/uploads') ? `http://localhost:5000${img}` : img);
+        const previews = product.images.map(img => img.startsWith('/uploads') ? `${API_BASE_URL}${img}` : img);
         setImagePreviews(previews);
         setImages([]); // clear files
         
@@ -100,7 +101,7 @@ export default function Addproduct() {
     const handleDeleteClick = async (productId) => {
         if (!window.confirm("Are you sure you want to delete this product?")) return;
         try {
-            const res = await fetch(`http://localhost:5000/api/products/${productId}`, {
+            const res = await fetch(`${API_BASE_URL}/api/products/${productId}`, {
                 method: 'DELETE'
             });
             const data = await res.json();
@@ -156,8 +157,8 @@ export default function Addproduct() {
         });
 
         const url = editingProduct 
-            ? `http://localhost:5000/api/products/${editingProduct._id}`
-            : 'http://localhost:5000/api/products';
+            ? `${API_BASE_URL}/api/products/${editingProduct._id}`
+            : `${API_BASE_URL}/api/products`;
         const method = editingProduct ? 'PUT' : 'POST';
 
         try {
@@ -240,7 +241,7 @@ export default function Addproduct() {
                                         <tbody>
                                             {products.map((prod) => {
                                                 const imgUrl = prod.images && prod.images.length > 0
-                                                    ? (prod.images[0].startsWith('/uploads') ? `http://localhost:5000${prod.images[0]}` : prod.images[0])
+                                                    ? (prod.images[0].startsWith('/uploads') ? `${API_BASE_URL}${prod.images[0]}` : prod.images[0])
                                                     : 'https://via.placeholder.com/50x60?text=No+Img';
                                                 return (
                                                     <tr key={prod._id}>

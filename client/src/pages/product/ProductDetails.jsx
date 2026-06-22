@@ -7,6 +7,7 @@ import {
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 import { useShop } from '../../context/ShopContext';
+import { API_BASE_URL } from '../../config';
 import './ProductDetails.css';
 
 export default function ProductDetails() {
@@ -28,7 +29,7 @@ export default function ProductDetails() {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/products/${id}`);
+                const res = await fetch(`${API_BASE_URL}/api/products/${id}`);
                 const data = await res.json();
                 if (data.success) {
                     setProduct(data.product);
@@ -110,7 +111,7 @@ export default function ProductDetails() {
     // Construct image URL utility
     const getFullImageUrl = (img) => {
         if (!img) return '';
-        return img.startsWith('/uploads') ? `http://localhost:5000${img}` : img;
+        return img.startsWith('/uploads') ? `${API_BASE_URL}${img}` : img;
     };
 
     const discountPercentage = (price > 0 && offerPrice > 0 && price > offerPrice)

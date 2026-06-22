@@ -3,6 +3,7 @@ import './hero.css'
 import heroImg from '../../assets/hero-bg.png'
 import Categories from '../categories/Categories'
 import ProductCard from '../products/ProductCard'
+import { API_BASE_URL } from '../../config'
 
 export default function hero() {
     const [popularProducts, setPopularProducts] = useState([])
@@ -11,7 +12,7 @@ export default function hero() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/products')
+                const res = await fetch(`${API_BASE_URL}/api/products`)
                 const data = await res.json()
                 if (data.success) {
                     const popular = data.products.filter(

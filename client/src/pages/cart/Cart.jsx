@@ -4,6 +4,7 @@ import { Trash2, Minus, Plus, ShoppingBag, ArrowRight } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
+import { API_BASE_URL } from '../../config';
 import './Cart.css';
 
 export default function Cart() {
@@ -12,7 +13,7 @@ export default function Cart() {
     // Helper to get full image URL
     const getFullImageUrl = (img) => {
         if (!img) return 'https://via.placeholder.com/150?text=No+Image';
-        return img.startsWith('/uploads') ? `http://localhost:5000${img}` : img;
+        return img.startsWith('/uploads') ? `${API_BASE_URL}${img}` : img;
     };
 
     // Calculate subtotal

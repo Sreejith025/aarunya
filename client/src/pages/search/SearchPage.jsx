@@ -4,6 +4,7 @@ import { Search, ArrowRight } from 'lucide-react';
 import Navbar from '../../components/navbar/Navbar';
 import ProductCard from '../../components/products/ProductCard';
 import Footer from '../../components/footer/Footer';
+import { API_BASE_URL } from '../../config';
 import './SearchPage.css';
 
 export default function SearchPage() {
@@ -20,7 +21,7 @@ export default function SearchPage() {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const res = await fetch('http://localhost:5000/api/products');
+                const res = await fetch(`${API_BASE_URL}/api/products`);
                 const data = await res.json();
                 if (data.success) {
                     setProducts(data.products);

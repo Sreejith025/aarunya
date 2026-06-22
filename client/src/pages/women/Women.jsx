@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import ProductCard from '../../components/products/ProductCard';
+import { API_BASE_URL } from '../../config';
 import './Women.css';
 import { useSearchParams } from 'react-router-dom';
 import Footer from '../../components/footer/Footer';
@@ -48,7 +49,7 @@ export default function Women() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/products');
+                const res = await fetch(`${API_BASE_URL}/api/products`);
                 const data = await res.json();
                 if (data.success) {
                     setProducts(data.products);

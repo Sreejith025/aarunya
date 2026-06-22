@@ -2,6 +2,7 @@ import React from 'react';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
+import { API_BASE_URL } from '../../config';
 import './ProductCard.css';
 
 export default function ProductCard({ product }) {
@@ -15,7 +16,7 @@ export default function ProductCard({ product }) {
 
     // Construct image URL
     const imageUrl = images && images.length > 0
-        ? (images[0].startsWith('/uploads') ? `http://localhost:5000${images[0]}` : images[0])
+        ? (images[0].startsWith('/uploads') ? `${API_BASE_URL}${images[0]}` : images[0])
         : 'https://via.placeholder.com/300x400?text=No+Image';
 
     const wish = isWishlisted(_id);

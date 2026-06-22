@@ -3,6 +3,7 @@ import './Navbar.css'
 import { Search, Heart, ShoppingBag, User } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useShop } from '../../context/ShopContext'
+import { API_BASE_URL } from '../../config'
 import {
     SignedIn,
     SignedOut,
@@ -28,7 +29,7 @@ export default function Navbar() {
         setShowDropdown(true)
         if (allProducts.length === 0) {
             try {
-                const res = await fetch('http://localhost:5000/api/products')
+                const res = await fetch(`${API_BASE_URL}/api/products`)
                 const data = await res.json()
                 if (data.success) {
                     setAllProducts(data.products)
@@ -121,7 +122,7 @@ export default function Navbar() {
                                     <div className="dropdown-results-list">
                                         {filteredResults.map(product => {
                                             const imgUrl = product.images?.[0]?.startsWith('/uploads')
-                                                ? `http://localhost:5000${product.images[0]}`
+                                                ? `${API_BASE_URL}${product.images[0]}`
                                                 : product.images?.[0] || 'https://via.placeholder.com/50';
                                             return (
                                                 <Link 
