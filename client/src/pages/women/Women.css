@@ -1,56 +1,57 @@
 .women-page {
     background-color: #f8f9fc;
     min-height: 100vh;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 }
 
 .women-banner {
     background: linear-gradient(135deg, #7e42ac 0%, #8b5dc3 50%, #a27ad1 100%);
-    padding: 60px 20px;
+    padding: clamp(35px, 6vw, 65px) 20px;
     text-align: center;
     color: white;
 }
 
 .women-banner h1 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 5vw, 3.8rem);
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-family: 'Playfair Display', serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    line-height: 1.15;
 }
 
 .women-banner p {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     max-width: 600px;
     margin: 0 auto;
     opacity: 0.95;
-    line-height: 2.8;
+    line-height: 1.5;
 }
 
 .women-categories-section {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 30px auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .women-categories-section h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
     color: #9169c1;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-weight: 700;
 }
 
 .women-categories-list {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: flex-start;
+    gap: 14px;
     overflow-x: auto;
-    padding: 10px 0 20px;
-    /* Hide scrollbar for webkit but keep functionality */
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
+    padding: 8px 4px 16px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .women-categories-list::-webkit-scrollbar {
@@ -61,13 +62,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     cursor: pointer;
-    min-width: 100px;
-    padding: 15px;
-    border-radius: 16px;
-    transition: all 0.3s ease;
+    min-width: 78px;
+    flex-shrink: 0;
+    padding: 8px 6px;
+    border-radius: 14px;
+    transition: all 0.25s ease;
     background: transparent;
+    scroll-snap-align: start;
 }
 
 .women-category-card:hover {
@@ -80,23 +83,25 @@
 }
 
 .women-category-icon {
-    width: 150px;
-    height: 150px;
+    width: 78px;
+    height: 78px;
     border-radius: 50%;
     background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     border: 3px solid transparent;
-    transition: all 0.3s ease;
-    padding: 4px;
+    transition: all 0.25s ease;
+    padding: 3px;
+    flex-shrink: 0;
 }
 
 .women-category-card.active .women-category-icon {
     border-color: #7e42ac;
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 6px 14px rgba(126, 66, 172, 0.25);
+    transform: scale(1.05);
 }
 
 .women-category-icon img {
@@ -107,73 +112,124 @@
 }
 
 .women-category-card span {
-    font-size: 0.95rem;
+    font-size: 12px;
     font-weight: 600;
     color: #475569;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
 .women-category-card.active span {
-    color: #1e3a8a;
+    color: #552787;
+    font-weight: 700;
 }
 
 .women-products-section {
-    max-width: 1400px;
-    margin: 40px auto;
+    max-width: 1300px;
+    margin: 30px auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .women-products-section h2 {
-    font-size: 2.0rem;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     color: #9169c1;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     font-weight: 700;
 }
 
 .women-products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 24px;
     width: 100%;
 }
 
 .products-grid {
     background: white;
-    padding: 40px;
+    padding: 30px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    min-height: 200px;
+    min-height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .no-products-state,
 .loading-state {
     color: #64748b;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
+/* Tablet & Desktop sizing */
+@media (min-width: 768px) {
+    .women-categories-list {
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .women-category-card {
+        min-width: 110px;
+        padding: 12px;
+    }
+
+    .women-category-icon {
+        width: 110px;
+        height: 110px;
+    }
+
+    .women-category-card span {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .women-category-icon {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* Responsive grid layout */
 @media (max-width: 1024px) {
     .women-products-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        gap: 18px;
     }
 }
 
 @media (max-width: 768px) {
+    .women-categories-section,
+    .women-products-section {
+        padding: 0 14px;
+        margin: 20px auto;
+    }
+
     .women-products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        gap: 12px;
     }
 }
 
 @media (max-width: 480px) {
+    .women-categories-section,
+    .women-products-section {
+        padding: 0 10px;
+    }
+
+    .women-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 340px) {
     .women-products-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
     }
 }

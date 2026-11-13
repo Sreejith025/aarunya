@@ -3,39 +3,46 @@
     min-height: 100vh;
     background-color: #f8f9fa;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .admin-container {
     display: flex;
     max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     background: #ffffff;
     min-height: calc(100vh - 75px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
 }
 
 /* Sidebar Styling */
 .admin-sidebar {
-    width: 260px;
-    padding: 30px 10px;
+    width: 250px;
+    padding: 24px 10px;
     border-right: 1px solid #edf2f7;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
 
 .sidebar-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 14px 20px;
+    gap: 12px;
+    padding: 12px 18px;
     color: #4a5568;
     cursor: pointer;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14.5px;
+    font-weight: 550;
     border-radius: 8px;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .sidebar-item.active {
@@ -52,61 +59,68 @@
 /* Main Content Styling */
 .admin-content {
     flex: 1;
-    padding: 40px 50px;
+    padding: 35px 40px;
     background-color: #ffffff;
     overflow-x: hidden;
+    min-width: 0;
+    text-align: left;
+    box-sizing: border-box;
 }
 
 /* Form Styles */
 .form-view h2,
 .product-list-view h2 {
-    font-size: 24px;
+    font-size: clamp(20px, 3.5vw, 24px);
     font-weight: 700;
     color: #1a202c;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     font-family: inherit;
 }
 
 .add-product-form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     max-width: 800px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .form-group label {
     font-weight: 600;
     color: #2d3748;
-    font-size: 14px;
+    font-size: 13.5px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .helper-label {
     font-size: 12px;
     font-weight: normal;
     color: #718096;
-    margin-left: 8px;
 }
 
 /* Form Controls */
 .form-group input,
 .form-group textarea,
 .form-group select {
-    padding: 12px 16px;
+    padding: 12px 14px;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     outline: none;
-    font-size: 14px;
+    font-size: 16px; /* 16px prevents iOS Safari from auto-zooming */
     color: #2d3748;
     background-color: #ffffff;
     transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
 .form-group input:focus,
@@ -124,23 +138,23 @@
 /* Image Upload Grid */
 .image-upload-container {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .upload-box {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border: 2px dashed #cbd5e0;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
     color: #718096;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     background-color: #f8fafc;
     cursor: pointer;
@@ -188,11 +202,13 @@
 /* Colors Section */
 .colors-input-row {
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .colors-input-row input {
     flex: 1;
+    min-width: 140px;
 }
 
 .add-color-btn {
@@ -200,11 +216,12 @@
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 0 24px;
+    padding: 10px 20px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13.5px;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .add-color-btn:hover {
@@ -216,18 +233,18 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 .color-tag {
     background: #f1f5f9;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #475569;
     border: 1px solid #e2e8f0;
 }
@@ -250,8 +267,9 @@
 /* Form Actions Row */
 .form-actions-row {
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 .submit-btn {
@@ -259,7 +277,7 @@
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 14px 35px;
+    padding: 13px 30px;
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
@@ -289,7 +307,7 @@
     color: #475569;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    padding: 14px 30px;
+    padding: 13px 26px;
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
@@ -303,11 +321,11 @@
 
 /* Messages */
 .message {
-    padding: 14px 20px;
+    padding: 12px 18px;
     border-radius: 8px;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13.5px;
     display: flex;
     align-items: center;
     animation: fadeIn 0.3s ease;
@@ -341,7 +359,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 
 .list-header-row h2 {
@@ -353,11 +373,12 @@
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13.5px;
     cursor: pointer;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .add-new-btn:hover {
@@ -371,30 +392,34 @@
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    overflow: hidden;
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
 .product-table {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
     text-align: left;
-    font-size: 14px;
+    font-size: 13.5px;
 }
 
 .product-table th {
     background-color: #f8fafc;
     color: #475569;
     font-weight: 600;
-    padding: 16px 20px;
+    padding: 14px 18px;
     border-bottom: 1px solid #e2e8f0;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 11.5px;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .product-table td {
-    padding: 16px 20px;
+    padding: 14px 18px;
     border-bottom: 1px solid #edf2f7;
     color: #334155;
     vertical-align: middle;
@@ -410,12 +435,12 @@
 
 /* Thumbnail Column */
 .img-td {
-    width: 80px;
+    width: 70px;
 }
 
 .table-product-img {
-    width: 48px;
-    height: 58px;
+    width: 44px;
+    height: 54px;
     object-fit: cover;
     border-radius: 6px;
     border: 1px solid #e2e8f0;
@@ -427,7 +452,7 @@
 .name-td {
     font-weight: 600;
     color: #1e293b;
-    max-width: 250px;
+    max-width: 200px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -435,13 +460,14 @@
 
 /* Action Buttons Styling */
 .actions-td {
-    width: 120px;
+    width: 110px;
+    white-space: nowrap;
 }
 
 .table-edit-btn,
 .table-delete-btn {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
     background-color: #ffffff;
@@ -450,7 +476,7 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-right: 8px;
+    margin-right: 6px;
 }
 
 .table-edit-btn {
@@ -474,10 +500,10 @@
 
 /* Empty State styling */
 .no-products-admin {
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
     color: #64748b;
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 500;
 }
 
@@ -493,27 +519,60 @@
         flex-direction: row;
         border-right: none;
         border-bottom: 1px solid #edf2f7;
-        padding: 15px 20px;
+        padding: 10px 14px;
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 6px;
+        scrollbar-width: none;
+    }
+
+    .admin-sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sidebar-item {
+        padding: 10px 16px;
+        font-size: 13.5px;
+        gap: 8px;
     }
     
     .admin-content {
-        padding: 30px 20px;
+        padding: 24px 18px;
     }
 }
 
-@media (max-width: 768px) {
-    .product-table th:nth-child(4),
-    .product-table td:nth-child(4) {
-        display: none; /* Hide Subcategory on small screens */
+@media (max-width: 600px) {
+    .admin-content {
+        padding: 18px 12px;
     }
-}
 
-@media (max-width: 580px) {
-    .product-table th:nth-child(3),
-    .product-table td:nth-child(3),
-    .product-table th:nth-child(6),
-    .product-table td:nth-child(6) {
-        display: none; /* Hide Category and Offer Price on tiny screens */
+    .list-header-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .add-new-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .upload-box {
+        width: 78px;
+        height: 78px;
+        font-size: 11.5px;
+    }
+
+    .form-actions-row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .submit-btn,
+    .cancel-edit-btn {
+        width: 100%;
+        text-align: center;
+        padding: 13px;
     }
 }
